@@ -1,56 +1,59 @@
-# Chirpy Starter
+[![Version](https://img.shields.io/github/package-json/v/dmego/home.github.io)](https://www.npmjs.com/package/dmego-home-page)
+[![Website](https://img.shields.io/website-up-down-green-red/http/i.dmego.cn.svg)](http://i.dmego.cn/)
+[![License](https://img.shields.io/github/license/dmego/home.github.io.svg)](/LICENSE)
+[![Say Thanks](https://img.shields.io/badge/Say-Thanks!-1EAEDB.svg)](https://saythanks.io/to/dmego)
 
-[![Gem Version](https://img.shields.io/gem/v/jekyll-theme-chirpy)][gem]&nbsp;
-[![GitHub license](https://img.shields.io/github/license/cotes2020/chirpy-starter.svg?color=blue)][mit]
+### 个人主页
 
-When installing the [**Chirpy**][chirpy] theme through [RubyGems.org][gem], Jekyll can only read files in the folders
-`_data`, `_layouts`, `_includes`, `_sass` and `assets`, as well as a small part of options of the `_config.yml` file
-from the theme's gem. If you have ever installed this theme gem, you can use the command
-`bundle info --path jekyll-theme-chirpy` to locate these files.
+>这是我的个人主页
 
-The Jekyll team claims that this is to leave the ball in the user’s court, but this also results in users not being
-able to enjoy the out-of-the-box experience when using feature-rich themes.
+>衍生自 [Vno](https://github.com/onevcat/vno-jekyll) Jekyll 主题
 
-To fully use all the features of **Chirpy**, you need to copy the other critical files from the theme's gem to your
-Jekyll site. The following is a list of targets:
+>页面部分加载效果借鉴于 [Mno](https://github.com/mcc108/mno) Ghost 主题
 
-```shell
-.
-├── _config.yml
-├── _plugins
-├── _tabs
-└── index.html
-```
+>借鉴了[北岛向南的小屋](https://javef.github.io/)的头像样式
 
-To save you time, and also in case you lose some files while copying, we extract those files/configurations of the
-latest version of the **Chirpy** theme and the [CD][CD] workflow to here, so that you can start writing in minutes.
+### 效果图
 
-## Prerequisites
+>静态图
 
-Follow the instructions in the [Jekyll Docs](https://jekyllrb.com/docs/installation/) to complete the installation of
-the basic environment. [Git](https://git-scm.com/) also needs to be installed.
+![主页JPG](https://unpkg.com/dmego-home-page@latest/assets/img/home.jpg)
 
-## Installation
+>动态图
 
-Sign in to GitHub and [**use this template**][use-template] to generate a brand new repository and name it
-`USERNAME.github.io`, where `USERNAME` represents your GitHub username.
+![主页GIF](https://unpkg.com/dmego-home-page@latest/assets/img/home.gif)
 
-Then clone it to your local machine and run:
+### 注
 
-```console
-$ bundle
-```
+- 访问地址：[个人主页](http://i.dmego.cn/)
+- 使用了 [一言](http://hitokoto.cn/) 的 API 服务
+- ~~使用了 [Bing 壁纸 API](https://github.com/xCss/bing/) 服务~~
+- ~~使用了 [Yahoo Query Language (YQL)](https://developer.yahoo.com/yql/) 来解决获取 Bing 壁纸跨域问题~~
+- ~~原先 YQL 服务将被淘汰，现改用 [JsonBird](https://bird.ioliu.cn/)~~
+- 使用 `GitHub Action` 来获取 Bing 壁纸，使用 `JSONP` 获取 Bing 壁纸 URL 文件
 
-## Usage
+### GitHub Action 补充说明
 
-Please see the [theme's docs](https://github.com/cotes2020/jekyll-theme-chirpy#documentation).
+- 利用 `Github Action` 提交代码需要一个 `GitHub API` 令牌, 可以在 [Create Tokens](https://github.com/settings/tokens) 这个地址，点击 `Generate new token` 按钮来创建
+  - `Expiration` 过期时间设置为 `No expiration`
+  - `Select scopes` 勾选 `repo`
+  - 点击 `Generate Token` 生成
+- 在仓库的 `Settings` ——>`Secrets` 功能栏中，点击 `New repository secrets` 按钮
+  -  在 `Name` 框中填写 `GH_TOKEN`
+  - 在 `Secrets` 栏中填写第一步生成的 `Token` 值
+- 详细配置步骤图可以参考《[GitHub Action 配置详细步骤](./ActionNotes.md)》文档
 
-## License
+### 更新记录
+- 2022-06-10
+  - 发布 NPM 包，使用 UNPKG 作为资源文件的 CDN 
+- 2023-02-27
+  - 添加《GitHub Action 配置详细步骤》文档
+- 2023-04-12
+  - 移除 Jquery 依赖，使用原生 JS
+- 2023-08-28
+  - 将壁纸地址换成 cn.bing.com
 
-This work is published under [MIT][mit] License.
+### Star History
 
-[gem]: https://rubygems.org/gems/jekyll-theme-chirpy
-[chirpy]: https://github.com/cotes2020/jekyll-theme-chirpy/
-[use-template]: https://github.com/cotes2020/chirpy-starter/generate
-[CD]: https://en.wikipedia.org/wiki/Continuous_deployment
-[mit]: https://github.com/cotes2020/chirpy-starter/blob/master/LICENSE
+[![Star History Chart](https://api.star-history.com/svg?repos=dmego/home.github.io&type=Date)](https://star-history.com/#dmego/home.github.io&Date)
+
