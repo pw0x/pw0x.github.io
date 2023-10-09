@@ -28,7 +28,6 @@ const resource = [
     '/assets/img/favicons/apple-touch-icon.png',
     '/assets/img/favicons/favicon-16x16.png',
     '/assets/img/favicons/favicon-32x32.png',
-    '/assets/img/favicons/favicon.PNG',
     '/assets/img/favicons/favicon.ico',
     '/assets/img/favicons/mstile-150x150.png',
     '/assets/js/dist/categories.min.js',
