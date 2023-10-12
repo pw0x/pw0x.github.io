@@ -8,7 +8,7 @@
     <meta name="description" content="pw0">
     <meta name="keywords" content="pw0,Homepage">
     <meta name="author" content="pw0">
-    <title>pw0</title>
+    <title>给自己线上办个展出个画册</title>
 	<link rel="stylesheet" type="text/css" href="https://unpkg.com/dmego-home-page@latest/assets/css/onlinewebfonts.css"/>
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/dmego-home-page@latest/assets/css/vno.css">
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/dmego-home-page@latest/assets/css/iconfont.css">
@@ -20,18 +20,22 @@
 				'https://z1.ax1x.com/2023/10/12/piSNckT.jpg', 
 				'https://z1.ax1x.com/2023/10/12/piSNy7V.jpg'];
 				var randomImage = images[Math.floor(Math.random() * images.length)];
-				document.body.style.backgroundImage = 'url(' + randomImage + ')';
+				document.getElementById("bg").style.backgroundImage = 'url(' + randomImage + ')';
 			}
 		</script>
+	<div id="bg"></div>
 	<style>
-		body {
-			margin: 20px; /* 设定留白距离 */
-			background-repeat: no-repeat; /* 背景图片不重复 */
-			background-position: center; /* 图片居中 */
-			background-size: contain; /* 保证图片始终完整显示 */
-			background-color: white; /* 空白部分设为白色 */
-		}
-		</style>	
+	body {
+		background-color: white;
+	}
+	#bg {
+		position: absolute;
+		top: 20px; right: 20px; bottom: 20px; left: 20px;  /* 上下左右留白20px */
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: contain;
+	}
+	</style>
 </head>
 
 <body>
