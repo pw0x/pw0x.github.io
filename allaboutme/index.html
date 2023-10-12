@@ -1,6 +1,84 @@
 <!DOCTYPE html>
 <html>
-<p>
-	ankang
-</p>
+	<script>
+		var backgroundImages = [
+		  'URL_1', 
+		  'URL_2',
+		  'URL_3', 
+		  // 在这里添加更多的URL
+		];
+		
+		function setBackground() {
+		  var randomIndex = Math.floor(Math.random() * backgroundImages.length);
+		  var imageUrl = backgroundImages[randomIndex];
+		  document.body.style.backgroundImage = 'url(' + imageUrl + ')';
+		}
+		
+		window.onload = setBackground;
+		</script>
+	<style>
+		body {
+		  margin: 0;
+		  padding: 50px; /* 通过调整此数值，来设置“画框”的大小 */
+		  box-sizing: border-box;
+		  background-size: cover; /* 背景图会在保持纵横比的情况下尽可能的撑满整个body */
+		  background-position: center; /* 确保背景图总是被水平和垂直居中 */
+		  background-repeat: no-repeat; /* 背景图不需要重复 */
+		  border: solid 50px white; /* 设置为50px宽，颜色为白色的“画框” */
+		}
+		</style>
+<head>
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="pw0">
+    <meta name="keywords" content="pw0,Homepage">
+    <meta name="author" content="pw0">
+    <title>pw0</title>
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/dmego-home-page@latest/assets/css/onlinewebfonts.css"/>
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/dmego-home-page@latest/assets/css/vno.css">
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/dmego-home-page@latest/assets/css/iconfont.css">
+    <link rel="apple-touch-icon" href="https://unpkg.com/dmego-home-page@latest/apple-touch-icon.png">
+    <link rel="icon" href="https://unpkg.com/dmego-home-page@latest/favicon.ico">
+</head>
+
+<body>
+    <span class="mobile btn-mobile-menu">
+        <i class="social iconfont icon-list btn-mobile-menu__icon"></i>
+        <i class="social iconfont icon-angleup btn-mobile-close__icon hidden"></i>
+    </span>
+    <header id="panel" class="panel-cover">
+        <div class="panel-main">
+            <div class="panel-main__inner panel-inverted">
+                <div class="panel-main__content">
+                    
+                    <!--<div class="ih-item circle effect right_to_left">-->            
+                        <a href="#" title="" class="blog-button">
+                            <div class="img"><img src="https://z1.ax1x.com/2023/10/12/piStuMn.jpg" alt="img" class="js-avatar iUp profilepic"></div>
+                            <div class="info iUp">
+                            </div>
+                        </a>
+                    </div>
+                
+                    <h1 class="panel-cover__title panel-title iUp">
+                        <a href="#" title="pw0">pw0</a>
+                    </h1>
+                    <p class="panel-cover__subtitle panel-subtitle iUp">一个至今且将依然梦想去月球写书的人</p>
+                    <p>&nbsp;</p>
+                    <hr class="panel-cover__divider iUp" />
+                <div class="navigation-wrapper iUp">
+                    <div>
+                        <nav class="cover-navigation cover-navigation--primary">
+                            <ul class="navigation">
+                                <li class="navigation__item">
+                                    <a href="https://www.pw0.xyz/allaboutme" class="blog-button" target="_blank">所有关于我的事情</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+    </header>
+    <script type="text/javascript" src="https://unpkg.com/dmego-home-page@latest/assets/js/main.js"></script>
+    <script type="text/javascript" src="./assets/json/images.json?cb=getBingImages"></script>
+</body>
 </html>
