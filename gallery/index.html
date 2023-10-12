@@ -14,33 +14,24 @@
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/dmego-home-page@latest/assets/css/iconfont.css">
     <link rel="apple-touch-icon" href="https://unpkg.com/dmego-home-page@latest/apple-touch-icon.png">
     <link rel="icon" href="https://unpkg.com/dmego-home-page@latest/favicon.ico">
-    <script>
-		var backgroundImages = [
-		  'https://z1.ax1x.com/2023/10/12/piSN2hF.jpg', 
-		  'https://z1.ax1x.com/2023/10/12/piSNckT.jpg',
-		  'https://z1.ax1x.com/2023/10/12/piSNy7V.jpg', 
-		  // 在这里添加更多的URL
-		];
-		
-		function setBackground() {
-		  var randomIndex = Math.floor(Math.random() * backgroundImages.length);
-		  var imageUrl = backgroundImages[randomIndex];
-		  document.body.style.backgroundImage = 'url(' + imageUrl + ')';
-		}
-		
-		window.onload = setBackground;
+		<script>
+			window.onload = function() {
+				var images = ['https://z1.ax1x.com/2023/10/12/piSN2hF.jpg',
+				'https://z1.ax1x.com/2023/10/12/piSNckT.jpg', 
+				'https://z1.ax1x.com/2023/10/12/piSNy7V.jpg'];
+				var randomImage = images[Math.floor(Math.random() * images.length)];
+				document.body.style.backgroundImage = 'url(' + randomImage + ')';
+			}
 		</script>
 	<style>
 		body {
-		  margin: 0;
-		  padding: 50px; /* 通过调整此数值，来设置“画框”的大小 */
-		  box-sizing: border-box;
-		  background-size: cover; /* 背景图会在保持纵横比的情况下尽可能的撑满整个body */
-		  background-position: center; /* 确保背景图总是被水平和垂直居中 */
-		  background-repeat: no-repeat; /* 背景图不需要重复 */
-		  border: solid 50px white; /* 设置为50px宽，颜色为白色的“画框” */
+			margin: 20px; /* 设定留白距离 */
+			background-repeat: no-repeat; /* 背景图片不重复 */
+			background-position: center; /* 图片居中 */
+			background-size: contain; /* 保证图片始终完整显示 */
+			background-color: white; /* 空白部分设为白色 */
 		}
-	</style>
+		</style>	
 </head>
 
 <body>
