@@ -36,8 +36,17 @@
 		background-size: contain;
 	}
 	</style>
+	<script>
+		window.onload = function() {
+			// 设置定时器，每15分钟（900000毫秒）刷新一次页面
+			setTimeout(function() {
+				location.reload();
+			}, 9);
+		}
+		</script>
 </head>
 
 <body>
+	<body onclick="location.reload();"></body>
 </body>
 </html>
