@@ -15,10 +15,11 @@
             background-repeat: no-repeat;
             background-position: center;
             background-size: contain;
+            opacity: 1;
+            transition: opacity 1s ease-in-out;
         }
         #bg2 {
             opacity: 0;
-            transition: opacity 1s ease-in-out;
         }
     </style>
 </head>
@@ -131,13 +132,17 @@
             var bg1 = document.getElementById("bg1");
             var bg2 = document.getElementById("bg2");
 
-            // 设置新图片为bg2的背景并淡入
+            // 设置新图片为bg2的背景并淡入，同时让bg1淡出
             bg2.style.backgroundImage = 'url(' + images[randomIndex] + ')';
             bg2.style.opacity = 1;
+            bg1.style.opacity = 0;
 
-            // 一旦淡入完成，更新bg1并重置bg2的透明度
+            // 一旦淡入淡出完成，交换两个div的角色
             setTimeout(function() {
-                bg1.style.backgroundImage = 'url(' + images[randomIndex] + ')';
+                var temp = bg1.style.backgroundImage;
+                bg1.style.backgroundImage = bg2.style.backgroundImage;
+                bg2.style.backgroundImage = temp;
+                bg1.style.opacity = 1;
                 bg2.style.opacity = 0;
             }, 1000);
         }
