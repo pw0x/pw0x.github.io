@@ -8,20 +8,23 @@
     <style>
         body {
             background-color: white;
-            transition: background-image 1s ease-in-out;
         }
-        #bg {
+        .bg {
             position: absolute;
             top: 50px; right: 50px; bottom: 50px; left: 50px;
             background-repeat: no-repeat;
             background-position: center;
             background-size: contain;
-            transition: background-image 1s ease-in-out;
+        }
+        #bg2 {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
         }
     </style>
 </head>
 <body>
-    <div id="bg"></div>
+    <div id="bg1" class="bg"></div>
+    <div id="bg2" class="bg"></div>
     <script>
         var images = ['https://z1.ax1x.com/2023/10/12/piSN2hF.jpg',
 				'https://z1.ax1x.com/2023/10/12/piSNckT.jpg', 
@@ -124,7 +127,19 @@
                 randomIndex = Math.floor(Math.random() * images.length);
             } while (randomIndex === lastImageIndex);
             lastImageIndex = randomIndex;
-            document.getElementById("bg").style.backgroundImage = 'url(' + images[randomIndex] + ')';
+
+            var bg1 = document.getElementById("bg1");
+            var bg2 = document.getElementById("bg2");
+
+            // 设置新图片为bg2的背景并淡入
+            bg2.style.backgroundImage = 'url(' + images[randomIndex] + ')';
+            bg2.style.opacity = 1;
+
+            // 一旦淡入完成，更新bg1并重置bg2的透明度
+            setTimeout(function() {
+                bg1.style.backgroundImage = 'url(' + images[randomIndex] + ')';
+                bg2.style.opacity = 0;
+            }, 1000);
         }
 
         window.onload = function() {
