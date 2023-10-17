@@ -109,7 +109,8 @@
 'https://pic.imgdb.cn/item/652ead75c458853aef339cb7.jpg',
 'https://pic.imgdb.cn/item/652ead76c458853aef339cf3.jpg',
 'https://pic.imgdb.cn/item/652ead76c458853aef339e1b.jpg',
-'https://pic.imgdb.cn/item/652ead76c458853aef339ea8.jpg'   ];
+'https://pic.imgdb.cn/item/652ead76c458853aef339ea8.jpg'
+        ];
         var recentlyShown = [];
 
         function getRandomImageIndex() {
@@ -137,17 +138,22 @@
             var bg1 = document.getElementById("bg1");
             var bg2 = document.getElementById("bg2");
 
+            // 先为bg2设置新的背景图片
             bg2.style.backgroundImage = 'url(' + images[randomIndex] + ')';
+            // 开始淡入淡出动画
             bg2.style.opacity = 1;
             bg1.style.opacity = 0;
 
             setTimeout(function() {
-                bg1.style.backgroundImage = bg2.style.backgroundImage;
+                // 动画结束后，只重置bg2的透明度，不更改背景图片
                 bg2.style.opacity = 0;
             }, 1000);
         }
 
         window.onload = function() {
+            var bg1 = document.getElementById("bg1");
+            var initialIndex = getRandomImageIndex();
+            bg1.style.backgroundImage = 'url(' + images[initialIndex] + ')';
             setRandomImage();
         }
 
