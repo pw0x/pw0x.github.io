@@ -5,10 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>给自己线上办个展出个画册</title>
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/dmego-home-page@latest/assets/css/onlinewebfonts.css"/>
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/dmego-home-page@latest/assets/css/vno.css">
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/dmego-home-page@latest/assets/css/iconfont.css">
+    <link rel="apple-touch-icon" href="https://unpkg.com/dmego-home-page@latest/apple-touch-icon.png">
+    <link rel="icon" href="https://unpkg.com/dmego-home-page@latest/favicon.ico">
     <style>
         body {
             background-color: white;
-            transition: background-image 1s ease-in-out;
+            overflow: hidden;
         }
         #bg1, #bg2 {
             position: absolute;
@@ -109,52 +114,36 @@
 'https://pic.imgdb.cn/item/652ead75c458853aef339cb7.jpg',
 'https://pic.imgdb.cn/item/652ead76c458853aef339cf3.jpg',
 'https://pic.imgdb.cn/item/652ead76c458853aef339e1b.jpg',
-'https://pic.imgdb.cn/item/652ead76c458853aef339ea8.jpg'
-        ];
-        var recentlyShown = [];
+'https://pic.imgdb.cn/item/652ead76c458853aef339ea8.jpg'];
+        var lastImageIndex = -1;
 
         function getRandomImageIndex() {
             var randomIndex;
-            var attempts = 0;
             do {
                 randomIndex = Math.floor(Math.random() * images.length);
-                attempts++;
-                if (attempts > images.length) {
-                    recentlyShown = [];
-                }
-            } while (recentlyShown.includes(randomIndex));
-            
-            recentlyShown.push(randomIndex);
-            if (recentlyShown.length > 3) {
-                recentlyShown.shift();
-            }
-
+            } while (randomIndex === lastImageIndex);
+            lastImageIndex = randomIndex;
             return randomIndex;
         }
 
         function setRandomImage() {
             var randomIndex = getRandomImageIndex();
-
             var bg1 = document.getElementById("bg1");
             var bg2 = document.getElementById("bg2");
 
-            // 先为bg2设置新的背景图片
             bg2.style.backgroundImage = 'url(' + images[randomIndex] + ')';
-            // 开始淡入淡出动画
             bg2.style.opacity = 1;
             bg1.style.opacity = 0;
 
             setTimeout(function() {
-                // 动画结束后，只重置bg2的透明度，不更改背景图片
+                bg1.style.backgroundImage = bg2.style.backgroundImage;
                 bg2.style.opacity = 0;
             }, 1000);
         }
 
         window.onload = function() {
             var bg1 = document.getElementById("bg1");
-            var initialIndex = getRandomImageIndex();
-            bg1.style.backgroundImage = 'url(' + images[initialIndex] + ')';
-            setRandomImage();
+            bg1.style.backgroundImage = 'url(' + images[getRandomImageIndex()] + ')';
         }
 
         document.body.onclick = setRandomImage;
