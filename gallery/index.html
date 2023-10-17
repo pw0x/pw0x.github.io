@@ -8,14 +8,14 @@
     <style>
         body {
             background-color: white;
+            transition: background-image 1s ease-in-out;
         }
-        .bg {
+        #bg1, #bg2 {
             position: absolute;
             top: 50px; right: 50px; bottom: 50px; left: 50px;
             background-repeat: no-repeat;
             background-position: center;
             background-size: contain;
-            opacity: 1;
             transition: opacity 1s ease-in-out;
         }
         #bg2 {
@@ -24,8 +24,8 @@
     </style>
 </head>
 <body>
-    <div id="bg1" class="bg"></div>
-    <div id="bg2" class="bg"></div>
+    <div id="bg1"></div>
+    <div id="bg2"></div>
     <script>
         var images = ['https://z1.ax1x.com/2023/10/12/piSN2hF.jpg',
 				'https://z1.ax1x.com/2023/10/12/piSNckT.jpg', 
@@ -109,37 +109,45 @@
 'https://pic.imgdb.cn/item/652ead75c458853aef339cb7.jpg',
 'https://pic.imgdb.cn/item/652ead76c458853aef339cf3.jpg',
 'https://pic.imgdb.cn/item/652ead76c458853aef339e1b.jpg',
-'https://pic.imgdb.cn/item/652ead76c458853aef339ea8.jpg'
-];
-        var lastImageIndex = -1;
+'https://pic.imgdb.cn/item/652ead76c458853aef339ea8.jpg'   ];
+        var recentlyShown = [];
 
-        // 预加载所有图片
-        function preloadImages() {
-            for (var i = 0; i < images.length; i++) {
-                var img = new Image();
-                img.src = images[i];
+        function getRandomImageIndex() {
+            var randomIndex;
+            var attempts = 0;
+            do {
+                randomIndex = Math.floor(Math.random() * images.length);
+                attempts++;
+                if (attempts > images.length) {
+                    recentlyShown = [];
+                }
+            } while (recentlyShown.includes(randomIndex));
+            
+            recentlyShown.push(randomIndex);
+            if (recentlyShown.length > 3) {
+                recentlyShown.shift();
             }
+
+            return randomIndex;
         }
 
         function setRandomImage() {
-    var randomIndex = getRandomImageIndex();
-    adjustWeights(randomIndex);
+            var randomIndex = getRandomImageIndex();
 
-    var bg1 = document.getElementById("bg1");
-    var bg2 = document.getElementById("bg2");
+            var bg1 = document.getElementById("bg1");
+            var bg2 = document.getElementById("bg2");
 
-    bg2.style.backgroundImage = 'url(' + images[randomIndex] + ')';
-    bg2.style.opacity = 1;
-    bg1.style.opacity = 0;
+            bg2.style.backgroundImage = 'url(' + images[randomIndex] + ')';
+            bg2.style.opacity = 1;
+            bg1.style.opacity = 0;
 
-    setTimeout(function() {
-        bg1.style.backgroundImage = bg2.style.backgroundImage;
-        bg2.style.opacity = 0;
-    }, 1000);
-}
+            setTimeout(function() {
+                bg1.style.backgroundImage = bg2.style.backgroundImage;
+                bg2.style.opacity = 0;
+            }, 1000);
+        }
 
         window.onload = function() {
-            preloadImages();
             setRandomImage();
         }
 
