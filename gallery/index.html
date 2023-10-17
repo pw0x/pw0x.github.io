@@ -121,41 +121,22 @@
             }
         }
 
-        // 设置随机图片，确保与上一张不同
         function setRandomImage() {
-            var randomIndex;
-            do {
-                randomIndex = Math.floor(Math.random() * images.length);
-            } while (randomIndex === lastImageIndex);
-            lastImageIndex = randomIndex;
+    var randomIndex = getRandomImageIndex();
+    adjustWeights(randomIndex);
 
-            var bg1 = document.getElementById("bg1");
-            var bg2 = document.getElementById("bg2");
+    var bg1 = document.getElementById("bg1");
+    var bg2 = document.getElementById("bg2");
 
-            // 设置新图片为bg2的背景并淡入，同时让bg1淡出
-            bg2.style.backgroundImage = 'url(' + images[randomIndex] + ')';
-            bg2.style.opacity = 1;
-            bg1.style.opacity = 0;
+    bg2.style.backgroundImage = 'url(' + images[randomIndex] + ')';
+    bg2.style.opacity = 1;
+    bg1.style.opacity = 0;
 
-            // 一旦淡入淡出完成，交换两个div的角色
-setTimeout(function() {
-    // 移除transition属性
-    bg1.style.transition = 'none';
-    bg2.style.transition = 'none';
-
-    var temp = bg1.style.backgroundImage;
-    bg1.style.backgroundImage = bg2.style.backgroundImage;
-    bg2.style.backgroundImage = temp;
-    bg1.style.opacity = 1;
-    bg2.style.opacity = 0;
-
-    // 恢复transition属性
     setTimeout(function() {
-        bg1.style.transition = 'opacity 1s ease-in-out';
-        bg2.style.transition = 'opacity 1s ease-in-out';
-    }, 10); // 延迟10毫秒以确保先前的更改已应用
-}, 1000);
-        }
+        bg1.style.backgroundImage = bg2.style.backgroundImage;
+        bg2.style.opacity = 0;
+    }, 1000);
+}
 
         window.onload = function() {
             preloadImages();
